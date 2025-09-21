@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Task 3.2 - Interactive Quiz</title>
+  <style>
+    body { font-family: Arial, sans-serif; text-align: center; margin: 50px; }
+    .quiz-box { background: #f4f4f4; padding: 20px; border-radius: 8px; max-width: 500px; margin: auto; }
+    button { margin-top: 10px; padding: 10px 15px; cursor: pointer; display: block; width: 100%; max-width: 200px; margin-left: auto; margin-right: auto; }
+    #result { margin-top: 15px; font-size: 18px; }
+  </style>
+</head>
+<body>
+  <h1>Simple Quiz</h1>
+  <div class="quiz-box">
+    <p id="question"></p>
+    <div id="options"></div>
+    <p id="result"></p>
+  </div>
+
+  <script>
+    const quizData = [
+      {
+        question: "What is the capital of France?",
+        options: ["Paris", "London", "Rome"],
+        answer: "Paris"
+      },
+      {
+        question: "Which language runs in a web browser?",
+        options: ["Python", "JavaScript", "C++"],
+        answer: "JavaScript"
+      }
+    ];
+
+    let currentQuestion = 0;
+
+    function loadQuestion() {
+      document.getElementById("result").innerHTML = "";
+      let q = quizData[currentQuestion];
+      document.getElementById("question").innerText = q.question;
+
+      let optionsHtml = "";
+      q.options.forEach(option => {
+        optionsHtml += `<button onclick="checkAnswer('${option}')">${option}</button>`;
+      });
+      document.getElementById("options").innerHTML = optionsHtml;
+    }
+
+    function checkAnswer(answer) {
+      let q = quizData[currentQuestion];
+      let result = document.getElementById("result");
+
+      if(answer === q.answer) {
+        result.innerHTML = "✅ Correct!";
+        result.style.color = "green";
+      } else {
+        result.innerHTML = "❌ Wrong, try again!";
+        result.style.color = "red";
+        return; // stop here if wrong
+      }
+
+      // Move to next question after 1 second
+      setTimeout(() => {
+        currentQuestion++;
+        if(currentQuestion < quizData.length) {
+          loadQuestion();
+        } else {
+          document.getElementById("question").innerText = "🎉 Quiz Completed!";
+          document.getElementById("options").innerHTML = "";
+        }
+      }, 1000);
+    }
+
+    // Load first question
+    loadQuestion();
+  </script>
+</body>
+</html>
