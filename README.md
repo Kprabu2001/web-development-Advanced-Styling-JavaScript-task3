@@ -13,3 +13,5 @@ API Integration – fetched real-time data (e.g., weather/joke API) and displaye
 🎯 Objective:
 
 To strengthen my expertise in CSS and JavaScript by applying advanced styling techniques, creating interactive components, and working with external APIs.
+
+A recorded demo video of this project is available on LinkedIn: [Insert LinkedIn Video Link](https://www.linkedin.com/posts/prabu-k001_apex-planet-task-3-completed-as-part-activity-7375429627911036928-ocZj?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFj7d1UBQLxRv7tOlEaIpLQM1ZAjvBNxdxA)
